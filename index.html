@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Ngoc Van" />
+        <link type="text/css" rel="stylesheet" href="style.css" />
+        <script src="java.js">  </script>
+        <title>TRAVEL</title>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="menu">
+                <div class="logo">
+                    <img src="image/logo.png" width="60px" height="60px">
+                </div>
+                <div class="header">
+                    <h1><b>TRAVEL NEWSLETTER</b></h1>
+                </div>
+            </div>
+        </div>
+        <div class="banner">
+            <div class="clock">
+                <span id="time"></span>
+                <script> dongho();</script>
+            </div>
+            <button onclick="function_NA()"><b>Nghệ An</b></button>
+            <button onclick="function_HN()"><b>Hà Nội</b></button>
+            <button onclick="function_CM()"><b>Cà Mau</b></button>
+            <button onclick="function_HL()"><b>Hạ Long</b></button>
+        </div> 
+        <div class="content">
+            <div class="main">
+                <div class="cell">
+                    <h1 style="text-align: center;">Nhiệt Độ<br><span id="nhietdo">0</span> &#186C </h1>
+                    <div class="img" style="text-align: center;">
+                        <img src="image/nhietdo.png" width="130px" height="130px" />
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <h1 style="text-align: center;">Độ ẩm<br><span id="doam">0</span>&#37</h1>
+                    <div class="img" style="text-align: center;">
+                        <img src="image/doam.png" width="130px" height="130px" />
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <h1 style="text-align: center;">Lượng mưa<br><span id = "luongmua">0</span>mm</h1>
+                    <div class="img" style="text-align: center;">
+                        <img src="image/luongmua.png" width="130px" height="130px" />
+                    </div>
+                </div>
+<!-- ------------------------BIỂU ĐỒ ------------------------------------------------------->
+                <div class="cell">
+                    <h1 style="text-align: center;">Biểu đồ<br></h1>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <canvas id="myChart" width="300" height="200"></canvas>
+                    <script>
+                        // Get canvas context and initialize chart with initial data
+                        var ctx = document.getElementById("myChart").getContext('2d');
+                
+                        var myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: ["NGHE AN", "CA MAU", "HA NOI", "HA LONG"],
+                                datasets: [
+                                    {
+                                        label: "NHIET DO",
+                                        data: [31, 27, 31, 35],
+                                        borderColor: "rgb(0, 0, 0)",
+                                        fill: false
+                                    },
+                                    {
+                                        label: "DO AM",
+                                        data: [46, 88, 43, 60],
+                                        borderColor: "rgb(255, 99, 132)",
+                                        fill: false
+                                    },
+                                    {
+                                        label: "LUONG MUA",
+                                        data: [68, 90, 0, 75],
+                                        borderColor: "rgb(255, 205, 86)",
+                                        fill: false
+                                    }
+                                ]
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+            <div  class="main2">
+                <div class="cell1">
+                    <h1 style="text-align: center;">Hotline</h1>
+                    <div class="img" style="text-align: center;">
+                        <img id="call" src="image/call_off.png" width="130px" height="130px" />
+                    </div >
+                    <button class="b_on"  type="button" id="bton"><b> On </b></button>
+                    <button class="b_off" type="button" id="btoff"><b> Off </b></button>
+                    <script>hotlinecontrol(); </script>
+                </div>
+                <div class="cell1">
+                    <h1 style="text-align: center;">Booking</h1>
+                    <div class="img" style="text-align: center;">
+                        <img id="book" src="image/booking.png" width="130px" height="130px" />
+                    </div>
+                    <button class="btnbook" type="button" id="btn1"><b>Booking</b></button>
+                    <script>booking(); </script>
+                </div>
+                <div class="cell1">
+                    <h1 style="text-align: center;">Cost</h1>
+                    <div class="img" style="text-align: center;">
+                        <img id="cost" src="image/cost.png" width="80px" height="80px" />
+                    </div>
+                    <div>
+                        <p><span id="sliderValue">50</span><b>k VND</b></p>
+                        <input type="range" min="50" max="10000" value="0" class="slider" id="myRange">
+                        <script> getvalueslider();</script>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <center>Trần Văn Lực - Phạm Ngọc Vân - SPKT - TT IoT - Sáng Thứ 6</center>
+            </div>
+        </div>
+
+        <script>
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+        </script>
+        <script>
+            //functions
+            var ndNA = document.getElementById('nhietdo');
+            var nd_NA = firebase.database().ref('nghean').child('nhietdo');  
+            var daNA = document.getElementById('doam');
+            var da_NA = firebase.database().ref('nghean').child('doam');
+            var lmNA = document.getElementById('luongmua');
+            var lm_NA = firebase.database().ref('nghean').child('luongmua');
+
+            var ndHN = document.getElementById('nhietdo');
+            var nd_HN = firebase.database().ref('hanoi').child('nhietdo');  
+            var daHN = document.getElementById('doam');
+            var da_HN = firebase.database().ref('hanoi').child('doam');
+            var lmHN = document.getElementById('luongmua');
+            var lm_HN = firebase.database().ref('hanoi').child('luongmua');
+
+            var ndCM = document.getElementById('nhietdo');
+            var nd_CM = firebase.database().ref('camau').child('nhietdo');
+            var daCM = document.getElementById('doam');
+            var da_CM = firebase.database().ref('camau').child('doam');  
+            var lmCM = document.getElementById('luongmua');
+            var lm_CM = firebase.database().ref('camau').child('luongmua');
+
+            var ndHL = document.getElementById('nhietdo');
+            var nd_HL = firebase.database().ref('halong').child('nhietdo');
+            var daHL = document.getElementById('doam');
+            var da_HL = firebase.database().ref('halong').child('doam');
+            var lmHL = document.getElementById('luongmua');
+            var lm_HL = firebase.database().ref('halong').child('luongmua');
+        </script>
+    </body>
+</html>

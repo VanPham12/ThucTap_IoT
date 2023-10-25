@@ -1,0 +1,196 @@
+body {
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1em;
+    margin-top: -5px;
+    margin-left: -10px;
+    }
+.container {
+    width: 100%;
+    min-height:min-content;
+    padding-left: 25px;
+    position:absolute;
+
+    }
+.menu {
+    position:absolute; 
+    height: 70px;
+    background-color:#125796c5;
+    width: 100%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+.logo{
+    margin-top:13px;
+    /* margin-bottom:30px; */
+    margin-left: 20px;
+    }
+.header{
+    font-family:Bookman;
+    font-size:25px;
+    color:yellow;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgb(231, 130, 130);
+    /* transition: text-shadow 0.3s; */
+    white-space: nowrap;
+    flex-grow: 1; /*căn giữa header*/
+    }
+.banner {
+    width: 100%;
+    text-align: left; 
+    position: absolute; 
+    top: 65px;
+    left: 0px;
+    background-color:#7bbbcfc5;
+    }
+.banner button {
+    width: 110px;
+    height: 50px;
+    font-size: 20px;
+    color: #081263;
+    background-color: rgb(253, 204, 145);
+    border: 2px solid rgb(11, 5, 5);
+    border-radius: 25px;
+    text-align: center;
+    transition: transform 0.5s;
+    margin: 0 60px; /* Thêm khoảng cách giữa các nút */
+    }
+.banner button:hover {
+    background-color: #FFFFE0;
+    color: #8B4513;
+    transform: scale(1.1); 
+    }
+.clock {
+    position: absolute;
+    top: 4px;
+    right: 80px; 
+    font-size: 30px;
+    color: #FFFFE0;
+    border: 2px solid #0e0e0c;
+    background-color: #d2966b;
+    padding: 13px;
+    border-radius: 15px;
+    }
+.clock:hover{
+    background-color: #FFFFE0;
+    color: #8B4513;
+    }
+.content{
+    padding: 1em 4em;
+    min-height:min-content;
+    background-image: url("image/background.jpg");
+    background-size: cover;
+    }
+.main{
+    overflow: none;
+    padding-left: 10px;
+    margin: 10em auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0px;
+    }
+.main2{
+    overflow: none;
+    padding-left: 10px;
+    margin: 3em auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px;
+    }
+.cell {
+    min-height:min-content;
+    margin: 5px 30px 20px 30px;
+    line-height: 2.5em;
+    transition: transform 0.5s, background-color 0.5s;
+    border: 2px solid darkgoldenrod;
+    border-radius: 30px;
+    background-color: rgba(100, 100, 100, 0.2);
+    /* width: 150px;      */
+}
+.cell1 {
+    min-height:min-content;
+    margin: -100px 70px 20px 60px;
+    line-height: 2.5em;
+    transition: transform 0.5s, background-color 0.5s;
+    border: 2px solid darkgoldenrod;
+    border-radius: 30px;
+    background-color: rgba(100, 100, 100, 0.2);
+  }
+  .b_on {
+    margin-left: 40px;
+    padding: 10px 30px;
+    background-color: #8B4513;
+    color: #ffffff;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transition: transform 0.5s;
+  }
+.b_on:active {
+    background-color:#FFFFE0;
+    color:#8B4513;
+  }
+.b_off {
+    margin-left:20px;
+    padding: 10px 30px;
+    background-color: #8B4513;
+    color: #ffffff;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transition: transform 0.5s;
+    }
+.b_off:active {
+    background-color:#FFFFE0;
+    color:#8B4513;
+  }
+.btnbook {
+    margin-left:80px;
+    padding: 10px 15px;
+    background-color: #8B4513;
+    color: #FFFFE0;
+    border-radius: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transition: transform 0.5s;
+}
+.btnbook:hover {
+    transform: scale(1.1);;
+    background-color: BLACK;
+}
+.slider {
+    margin:10px 0px 10px 40px;
+    width: 200px;
+    height: 10px;
+    background-color:#8B4513;
+    border-radius: 10px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: background-color 0.3s;
+  } 
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background-color:#FFFFE0;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+#sliderValue {
+    margin-left: 100px;
+    font-weight: bold;
+    font-size:24px;
+    font-family:Courier New;
+  }
+.footer {
+    font-size: 20px;
+    color: yellow;
+    text-shadow: 2px 2px 4px rgb(231, 130, 130);
+}
